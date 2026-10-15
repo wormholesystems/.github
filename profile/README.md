@@ -16,7 +16,7 @@ New work happens in [wormholesystems](https://github.com/wormholesystems/wormhol
 ## Run your own instance
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://install-next.wormhole.systems | sh
+curl --proto '=https' --tlsv1.2 -sSf https://install.wormhole.systems | sh
 wsctl setup
 ```
 
