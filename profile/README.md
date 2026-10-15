@@ -1,42 +1,35 @@
 # WormholeSystems
 
-Wormhole mapping and collaboration platform for EVE Online — live at [wormhole.systems](https://wormhole.systems/). Real-time chain maps, signature tracking, smart routing and killmail intelligence for corporations and alliances living in wormhole space.
+A real-time wormhole mapper for EVE Online, live at [wormhole.systems](https://wormhole.systems/). Shared chain maps, signature tracking, mass and lifetime per hole, routing through the chain, live pilot locations and Discord alerts for corporations and alliances living in wormhole space.
 
-## Repositories at a glance
+## Repositories
 
 | Repository | What it is | Status |
 |---|---|---|
-| [WormholeSystems](https://github.com/WormholeSystems/WormholeSystems) | The application — Laravel 12, Inertia.js, Vue 3 | [![tests](https://github.com/WormholeSystems/WormholeSystems/actions/workflows/tests.yml/badge.svg)](https://github.com/WormholeSystems/WormholeSystems/actions/workflows/tests.yml) [![linter](https://github.com/WormholeSystems/WormholeSystems/actions/workflows/lint.yml/badge.svg)](https://github.com/WormholeSystems/WormholeSystems/actions/workflows/lint.yml) [![last commit](https://img.shields.io/github/last-commit/WormholeSystems/WormholeSystems)](https://github.com/WormholeSystems/WormholeSystems/commits) |
-| [wormholesystems-containers](https://github.com/WormholeSystems/wormholesystems-containers) | Production docker stack for self-hosting | [![submodules](https://github.com/WormholeSystems/wormholesystems-containers/actions/workflows/update.yml/badge.svg)](https://github.com/WormholeSystems/wormholesystems-containers/actions/workflows/update.yml) [![last commit](https://img.shields.io/github/last-commit/WormholeSystems/wormholesystems-containers)](https://github.com/WormholeSystems/wormholesystems-containers/commits) |
-| [wormholesystems-cli](https://github.com/WormholeSystems/wormholesystems-cli) | `wsctl` — setup wizard and management tool | [![CI](https://github.com/WormholeSystems/wormholesystems-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/WormholeSystems/wormholesystems-cli/actions/workflows/ci.yml) [![release](https://img.shields.io/github/v/release/WormholeSystems/wormholesystems-cli)](https://github.com/WormholeSystems/wormholesystems-cli/releases/latest) |
+| [wormholesystems](https://github.com/wormholesystems/wormholesystems) | The app: Rust (axum, Postgres) and SvelteKit, plus `wsctl` for self-hosting. In beta. | [![CI](https://github.com/wormholesystems/wormholesystems/actions/workflows/ci.yml/badge.svg)](https://github.com/wormholesystems/wormholesystems/actions/workflows/ci.yml) [![last commit](https://img.shields.io/github/last-commit/wormholesystems/wormholesystems)](https://github.com/wormholesystems/wormholesystems/commits) |
+| [wormholesystems-legacy](https://github.com/wormholesystems/wormholesystems-legacy) | The original Laravel, Inertia and Vue app, still running at [legacy.wormhole.systems](https://legacy.wormhole.systems/) | [![last commit](https://img.shields.io/github/last-commit/wormholesystems/wormholesystems-legacy)](https://github.com/wormholesystems/wormholesystems-legacy/commits) |
+| [wormholesystems-containers](https://github.com/wormholesystems/wormholesystems-containers) | Docker stack for self-hosting the legacy app | |
+| [wormholesystems-cli](https://github.com/wormholesystems/wormholesystems-cli) | The legacy `wsctl` that sets that stack up | |
 
-**How it fits together:** [WormholeSystems](https://github.com/WormholeSystems/WormholeSystems) is the application itself. [wormholesystems-containers](https://github.com/WormholeSystems/wormholesystems-containers) packages it as a production docker stack (Traefik with automatic SSL, frankenPHP, MySQL, Redis, Reverb). [wsctl](https://github.com/WormholeSystems/wormholesystems-cli) sets that stack up interactively and keeps its EVE data updated.
+New work happens in [wormholesystems](https://github.com/wormholesystems/wormholesystems). The legacy repositories are kept running but only get fixes.
 
 ## Run your own instance
 
 ```bash
-curl --proto '=https' --tlsv1.2 -sSf https://install.wormhole.systems | sh
+curl --proto '=https' --tlsv1.2 -sSf https://install-next.wormhole.systems | sh
+wsctl setup
 ```
 
-One command installs `wsctl` and walks you through the whole setup — domains, EVE credentials, secrets, SSL, database. See the [container stack README](https://github.com/WormholeSystems/wormholesystems-containers#readme) for details and requirements.
+You need Docker, a domain pointed at the machine and an EVE application from the [developer portal](https://developers.eveonline.com/). `wsctl setup` asks for the rest, runs Postgres and Caddy itself or uses ones you already have, and `wsctl update` keeps the instance current. See the [self-hosting docs](https://github.com/wormholesystems/wormholesystems/blob/main/docs/deployment.md).
 
-## Features
-
-- **Interactive maps** — real-time wormhole mapping with drag-and-drop chain visualization
-- **Collaborative mapping** — live collaboration for corporations and alliances
-- **Signature tracking** — centralized wormhole signature management
-- **Smart routing** — pathfinding through chains with mass calculations
-- **Activity monitoring & intel** — killmail feeds, automated notes and insights per system
-- **Access control** — permission management down to character level
-
-## Community & contact
+## Community and contact
 
 - **Discord**: [Join our Discord](https://discord.gg/rpfWCzVJS7)
 - **Email**: [nicolaskion07@gmail.com](mailto:nicolaskion07@gmail.com)
-- **Developer**: [NicolasKion](https://github.com/NicolasKion) — [nicolaskion.dev](https://nicolaskion.dev)
+- **Developer**: [NicolasKion](https://github.com/NicolasKion), [nicolaskion.dev](https://nicolaskion.dev)
 
-Contributions are welcome — bug reports, feature suggestions and pull requests alike.
+Bug reports, feature ideas and pull requests are welcome.
 
 ## License
 
-MIT — see the individual repositories.
+MIT, see the individual repositories.
